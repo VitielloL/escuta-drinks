@@ -10,16 +10,9 @@ import { categories, drinks } from "@/data/drinks";
 export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Todos");
-  const [showWelcomeModal, setShowWelcomeModal] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-
-    return window.localStorage.getItem("escuta-welcome-seen") !== "true";
-  });
+  const [showWelcomeModal, setShowWelcomeModal] = useState(true);
 
   const handleCloseWelcome = () => {
-    window.localStorage.setItem("escuta-welcome-seen", "true");
     setShowWelcomeModal(false);
   };
 
@@ -74,7 +67,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-zinc-300">
-              Bartender e vou fazer os melhores drinks possíveis essa noite!<br />
+              Bartender da casa e vou fazer os melhores drinks possíveis essa noite!<br />
               <span className="font-medium text-zinc-100">(a bartender favorita do Vit)</span>
             </p>
 
