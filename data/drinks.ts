@@ -3,7 +3,7 @@ import { Drink } from "@/types/drink";
 export const drinks: Drink[] = [
   {
     id: "bloodymary",
-    image: "/images/01-bloody-mary.jpg",
+    image: "/images/drinks/Bloody%20Mary.png",
     name: "Bloody Mary",
     category: "Clássicos",
     garnish: "A ESCOLHER",
@@ -45,7 +45,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "bittergiuseppe",
-    image: "/images/02-bitter-giuseppe.jpg",
+    image: "/images/drinks/Bitter%20Giuseppe.png",
     name: "Bitter Giuseppe",
     category: "Clássicos",
     garnish: "Zest de limão siciliano ou azeitona",
@@ -89,7 +89,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "drymartini",
-    image: "/images/03-dry-martini.jpg",
+    image: "/images/drinks/Dry%20Martini.png",
     name: "Dry Martini",
     category: "Clássicos",
     garnish: "Zest siciliano ou azeitona",
@@ -123,7 +123,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "dirtymartini",
-    image: "/images/04-dirty-martini.jpg",
+    image: "/images/drinks/Dirty%20Martini.png",
     name: "Dirty Martini",
     category: "Clássicos",
     garnish: "Azeitonas",
@@ -170,7 +170,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "amarettosour",
-    image: "/images/05-amaretto-sour.jpg",
+    image: "/images/drinks/Amaretto%20Sour.png",
     name: "Amaretto Sour",
     category: "Clássicos Contemporâneos",
     garnish: "Óleos essenciais de limão siciliano",
@@ -220,7 +220,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "piscosour",
-    image: "/images/06-pisco-sour.jpg",
+    image: "/images/drinks/Pisco%20Sour.png",
     name: "Pisco Sour",
     category: "Clássicos Contemporâneos",
     garnish: "Zest de limão siciliano",
@@ -276,7 +276,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "oldcuban",
-    image: "/images/07-old-cuban.jpg",
+    image: "/images/drinks/Old%20Cuban.png",
     name: "Old Cuban",
     category: "Clássicos",
     garnish: "Folha de hortelão",
@@ -334,7 +334,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "espressomartini",
-    image: "/images/08-espresso-martini.jpg",
+    image: "/images/drinks/Espresso%20Martini.png",
     name: "Espresso Martini",
     category: "Clássicos",
     garnish: "3 grãos de café",
@@ -386,7 +386,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "paperplane",
-    image: "/images/09-paperplane.jpg",
+    image: "/images/drinks/PaperPlane.png",
     name: "PaperPlane",
     category: "Clássicos Contemporâneos",
     garnish: "Zest de limão siciliano",
@@ -436,7 +436,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "sidecar",
-    image: "/images/10-sidecar.jpg",
+    image: "/images/drinks/Sidecar.png",
     name: "Sidecar",
     category: "Clássicos",
     garnish: "Twist de laranja",
@@ -483,7 +483,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "marktwain",
-    image: "/images/11-mark-twain.jpg",
+    image: "/images/drinks/Mark%20Twain.png",
     name: "Mark Twain",
     category: "Clássicos",
     garnish: "twists de limão sicíliano",
@@ -532,7 +532,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "fitzgerald",
-    image: "/images/12-fitzgerald.jpg",
+    image: "/images/drinks/Fitzgerald.png",
     name: "Fitzgerald",
     category: "Clássicos",
     garnish: "Twist de limão siciliano",
@@ -585,7 +585,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "goldrush",
-    image: "/images/13-gold-rush.jpg",
+    image: "/images/drinks/Gold%20Rush.png",
     name: "Gold Rush",
     category: "Clássicos",
     garnish: "Twist de limão sicíliano",
@@ -632,7 +632,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "cosmopolitan",
-    image: "/images/14-cosmopolitan.jpg",
+    image: "/images/drinks/Cosmopolitan.png",
     name: "Cosmopolitan",
     category: "Clássicos",
     garnish: "Zest de laranja bahia",
@@ -686,7 +686,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "vermutetnica",
-    image: "/images/15-vermute-tonica.jpg",
+    image: "/images/drinks/Vermute%20Tônica.png",
     name: "Vermute Tônica",
     category: "Clássicos",
     garnish: "Meia lua de laranja baha",
@@ -716,7 +716,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral1",
-    image: "/images/16-autoral-1.jpg",
+    image: "/images/drinks/Autoral.png",
     name: "Autoral 1",
     category: "Autorais",
     garnish: "Bala de tamarindo",
@@ -761,7 +761,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral2",
-    image: "/images/17-autoral-2.jpg",
+    image: "/images/drinks/Autoral.png",
     name: "Autoral 2",
     category: "Autorais",
     garnish: "Amendoin praliné artesanal",
@@ -807,7 +807,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral3",
-    image: "/images/18-autoral-3.jpg",
+    image: "/images/drinks/Autoral.png",
     name: "Autoral 3",
     category: "Autorais",
     garnish: "Ar molecular de erva mate verde",
@@ -841,7 +841,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral4",
-    image: "/images/19-autoral-4.jpg",
+    image: "/images/drinks/Autoral.png",
     name: "Autoral 4",
     category: "Autorais",
     garnish: "Não informado",
@@ -881,7 +881,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral5",
-    image: "/images/20-autoral-5.jpg",
+    image: "/images/drinks/Autoral.png",
     name: "Autoral 5",
     category: "Autorais",
     garnish: "Spaghetti de jabuticaba e coentro",
@@ -926,7 +926,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral6",
-    image: "/images/21-autoral-6.jpg",
+    image: "/images/drinks/Autoral.png",
     name: "Autoral 6",
     category: "Autorais",
     garnish: "Esponja de laranja e mel",
@@ -967,7 +967,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "darklady",
-    image: "/images/22-dark-lady.jpg",
+    image: "/images/drinks/Dark%20Lady.png",
     name: "Dark Lady",
     category: "Novos Clássicos Brasileiros",
     garnish: "Crusta de Açucar cristal / Zest de laranja bahia",
@@ -1007,7 +1007,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "urca",
-    image: "/images/23-urca.jpg",
+    image: "/images/drinks/Urca.png",
     name: "Urca",
     category: "Novos Clássicos Brasileiros",
     garnish: "Zest de limão siciliano",
@@ -1052,7 +1052,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "mojitodoagreste",
-    image: "/images/24-mojito-do-agreste.jpg",
+    image: "/images/drinks/Mojito%20do%20agreste.png",
     name: "Mojito do agreste",
     category: "Novos Clássicos Brasileiros",
     garnish: "Não informado",
@@ -1106,7 +1106,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "popcool",
-    image: "/images/25-pop-cool.jpg",
+    image: "/images/drinks/Pop%20cool.png",
     name: "Pop cool",
     category: "Novos Clássicos Brasileiros",
     garnish: "Pequeno talo de aipo",
@@ -1161,7 +1161,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "cafun",
-    image: "/images/26-cafune.jpg",
+    image: "/images/drinks/Cafuné.png",
     name: "Cafuné",
     category: "Novos Clássicos Brasileiros",
     garnish: "Lascas de coco / raspas de rapadura",
@@ -1205,7 +1205,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "bonfim",
-    image: "/images/27-bonfim.jpg",
+    image: "/images/drinks/Bonfim.png",
     name: "Bonfim",
     category: "Novos Clássicos Brasileiros",
     garnish: "Fita de bonfim / Pimenta malagueta",
@@ -1258,7 +1258,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "santabrbara",
-    image: "/images/28-santa-barbara.jpg",
+    image: "/images/drinks/Santa%20Bárbara.png",
     name: "Santa Bárbara",
     category: "Novos Clássicos Brasileiros",
     garnish: "Espuma de gengibre",
@@ -1303,7 +1303,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "santacruzjulep",
-    image: "/images/29-santa-cruz-julep.jpg",
+    image: "/images/drinks/Santa%20cruz%20julep.png",
     name: "Santa cruz julep",
     category: "Novos Clássicos Brasileiros",
     garnish: "Ramo de hortelã / flores de camomila",
@@ -1347,7 +1347,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "carcar",
-    image: "/images/30-carcara.jpg",
+    image: "/images/drinks/Carcará.png",
     name: "Carcará",
     category: "Novos Clássicos Brasileiros",
     garnish: "Zest de laranja bahia",
@@ -1395,7 +1395,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "roselle",
-    image: "/images/31-roselle.jpg",
+    image: "/images/drinks/Roselle.png",
     name: "Roselle",
     category: "Novos Clássicos Brasileiros",
     garnish: "Pétala de rosa e zest de siciliano",
@@ -1444,7 +1444,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "tupiornot",
-    image: "/images/32-tupi-or-not.jpg",
+    image: "/images/drinks/Tupi%20or%20not.png",
     name: "Tupi or not",
     category: "Novos Clássicos Brasileiros",
     garnish: "Gema de jambu",
@@ -1488,7 +1488,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "3000liras",
-    image: "/images/33-3000-liras.jpg",
+    image: "/images/drinks/3000%20Liras.png",
     name: "3000 Liras",
     category: "Novos Clássicos Brasileiros",
     garnish: "Folha de manjericão",
@@ -1536,7 +1536,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "milestones",
-    image: "/images/34-milestones.jpg",
+    image: "/images/drinks/Milestones.png",
     name: "Milestones",
     category: "Novos Clássicos Brasileiros",
     garnish: "Limão tahiti desidratado",
@@ -1575,7 +1575,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "jorgeamado",
-    image: "/images/35-jorge-amado.jpg",
+    image: "/images/drinks/Jorge%20Amado.png",
     name: "Jorge Amado",
     category: "Novos Clássicos Brasileiros",
     garnish: "Canela em pau",
@@ -1623,7 +1623,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "caju-amigo",
-    image: "/images/36-caju-amigo.jpg",
+    image: "/images/drinks/Caju%20Amigo.png",
     name: "Caju Amigo",
     category: "Novos Clássicos Brasileiros",
     garnish: "Compota de caju (vai  no fundo do copo)",
@@ -1674,7 +1674,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "glorybox",
-    image: "/images/37-glory-box.jpg",
+    image: "/images/drinks/Glory%20Box.png",
     name: "Glory Box",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1710,7 +1710,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "santogold",
-    image: "/images/38-santogold.jpg",
+    image: "/images/drinks/Santogold.png",
     name: "Santogold",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1746,7 +1746,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "lemonpepper",
-    image: "/images/39-lemon-pepper.jpg",
+    image: "/images/drinks/Lemon%20Pepper.png",
     name: "Lemon Pepper",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1787,7 +1787,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "back2black",
-    image: "/images/40-back2black.jpg",
+    image: "/images/drinks/Back2Black.png",
     name: "Back2Black",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1818,7 +1818,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "ginchee",
-    image: "/images/41-ginchee.jpg",
+    image: "/images/drinks/Ginchee.png",
     name: "Ginchee",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1864,7 +1864,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "savana55",
-    image: "/images/42-savana-55.jpg",
+    image: "/images/drinks/Savana%2055.png",
     name: "Savana 55",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1915,7 +1915,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "urutu",
-    image: "/images/43-urutu.jpg",
+    image: "/images/drinks/Urutu.png",
     name: "Urutu",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1956,7 +1956,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "hunnybunny",
-    image: "/images/44-hunny-bunny.jpg",
+    image: "/images/drinks/Hunny%20Bunny.png",
     name: "Hunny Bunny",
     category: "Clássicos do Meza",
     garnish: "Não informado",

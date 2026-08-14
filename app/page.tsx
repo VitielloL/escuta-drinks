@@ -11,9 +11,15 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Todos");
   const [showWelcomeModal, setShowWelcomeModal] = useState(true);
+  const [showLifeModal, setShowLifeModal] = useState(false);
 
   const handleCloseWelcome = () => {
     setShowWelcomeModal(false);
+    setShowLifeModal(true);
+  };
+
+  const handleCloseLifeModal = () => {
+    setShowLifeModal(false);
   };
 
   const filteredDrinks = useMemo(() => {
@@ -67,13 +73,49 @@ export default function Home() {
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-zinc-300">
-              Bartender da casa e vou fazer os melhores drinks possíveis essa noite!<br />
+              Bartender da casa e vou fazer os melhores drinks possíveis nessa noite 🌙🍸 <br />
               <span className="font-medium text-zinc-100">(a bartender favorita do Vit)</span>
             </p>
 
             <button
               type="button"
               onClick={handleCloseWelcome}
+              className="mt-6 w-full rounded-full bg-white px-4 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200"
+            >
+              Entrar
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showLifeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 backdrop-blur-sm">
+          <div className="w-full max-w-sm rounded-4xl border border-white/10 bg-[#121212] p-5 text-center text-zinc-100 shadow-2xl">
+            <div className="mx-auto mb-4 h-28 w-28 overflow-hidden rounded-full border-2 border-zinc-200/80 bg-zinc-800">
+              <Image
+                src="/images/drinks/a-vida.png"
+                alt="A vida"
+                width={112}
+                height={112}
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-zinc-400">
+              Escuta
+            </p>
+
+            <h2 className="mt-3 text-2xl font-black leading-tight text-white">
+              A vida
+            </h2>
+
+            <p className="mt-3 text-sm leading-6 text-zinc-300">
+              Irmão, a vida é foda. Beba com moderação, viva um dia de cada vez, se hidrate e seja o mais feliz possível sem fazer mal a ninguém. (ou ao mínimo possível de pessoas)✨
+            </p>
+
+            <button
+              type="button"
+              onClick={handleCloseLifeModal}
               className="mt-6 w-full rounded-full bg-white px-4 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200"
             >
               Entrar
