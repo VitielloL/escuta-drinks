@@ -15,5 +15,6 @@ export interface Drink {
   glass: string;
   ingredients: Ingredient[];
   preparation: string[];
+  history?: string;
   tags?: string[];
 }

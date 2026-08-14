@@ -82,42 +82,42 @@ export default function Home() {
         </div>
       )}
 
-      <main className="min-h-screen bg-zinc-100">
-        <div className="mx-auto min-h-screen max-w-2xl bg-zinc-100 px-4 pb-8 pt-6">
-          <header className="mb-6 rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm">
+      <main className="min-h-screen bg-[#f5f1ed]">
+        <div className="mx-auto min-h-screen max-w-2xl bg-[#f5f1ed] px-4 pb-8 pt-5">
+          <header className="mb-5 rounded-[28px] border border-zinc-200 bg-white p-3.5 shadow-[0_10px_25px_rgba(24,24,27,0.04)]">
             <div className="flex items-center gap-3">
               <Image
                 src="/images/escuta-logo.jpg"
                 alt="Escuta"
                 width={64}
                 height={64}
-                className="h-16 w-16 rounded-2xl object-cover"
+                className="h-14 w-14 rounded-2xl object-cover"
               />
 
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
                   Escuta
                 </p>
 
-                <h1 className="mt-1 text-3xl font-black tracking-tight text-zinc-950">
+                <h1 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
                   Drinks
                 </h1>
               </div>
             </div>
 
-            <p className="mt-3 text-sm text-zinc-500">
+            <p className="mt-3 text-xs text-zinc-500">
               Consulte rapidamente as receitas durante o serviço.
             </p>
           </header>
 
-          <section className="mb-5">
+          <section className="mb-4">
             <SearchBar
               value={search}
               onChange={setSearch}
             />
           </section>
 
-          <section className="mb-6">
+          <section className="mb-5">
             <CategoryFilter
               categories={categories}
               selected={category}
@@ -126,17 +126,17 @@ export default function Home() {
           </section>
 
           <section>
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="font-bold text-zinc-900">
+            <div className="mb-2.5 flex items-center justify-between">
+              <h2 className="text-sm font-bold uppercase tracking-[0.12em] text-zinc-700">
                 Drinks
               </h2>
 
-              <span className="text-sm text-zinc-500">
+              <span className="text-xs text-zinc-500">
                 {filteredDrinks.length}
               </span>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {filteredDrinks.map((drink) => (
                 <DrinkCard
                   key={drink.id}

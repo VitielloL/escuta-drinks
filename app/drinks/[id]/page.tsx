@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { drinks } from "@/data/drinks";
@@ -6,6 +7,19 @@ interface DrinkPageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+function getGlassEmoji(glass: string) {
+  const normalized = glass.toLowerCase();
+
+  if (normalized.includes("long") || normalized.includes("americano")) return "🥤";
+  if (normalized.includes("rocks") || normalized.includes("on the rocks")) return "🧊";
+  if (normalized.includes("flute") || normalized.includes("champagne")) return "🥂";
+  if (normalized.includes("coupe") || normalized.includes("nick") || normalized.includes("nora")) return "🍸";
+  if (normalized.includes("diamante") || normalized.includes("cristal")) return "💎";
+  if (normalized.includes("copo") || normalized.includes("taça")) return "🥃";
+
+  return "🍸";
 }
 
 export default async function DrinkPage({
@@ -20,7 +34,7 @@ export default async function DrinkPage({
   }
 
   return (
-    <main className="min-h-screen bg-zinc-100">
+    <main className="min-h-screen bg-[#f5f1ed]">
       <div className="mx-auto min-h-screen max-w-2xl px-4 pb-10 pt-5">
         <Link
           href="/"
@@ -29,18 +43,22 @@ export default async function DrinkPage({
           ← Voltar
         </Link>
 
-        <header className="mt-5">
+        <header className="mt-4">
           {drink.image && (
-            <div className="mb-4 overflow-hidden rounded-3xl border border-zinc-200 bg-white">
-              <img
+            <div className="mb-4 overflow-hidden rounded-[28px] border border-zinc-200 bg-white shadow-[0_10px_25px_rgba(24,24,27,0.04)]">
+              <Image
                 src={drink.image}
                 alt={drink.name}
-                className="h-56 w-full object-cover"
+                width={1200}
+                height={600}
+                quality={90}
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="h-52 w-full object-cover"
               />
             </div>
           )}
 
-          <p className="text-sm font-medium uppercase tracking-wide text-zinc-500">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
             {drink.category}
           </p>
 
@@ -48,31 +66,31 @@ export default async function DrinkPage({
             {drink.name}
           </h1>
 
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <div className="rounded-2xl bg-white p-4">
-              <p className="text-xs font-medium uppercase text-zinc-400">
+          <div className="mt-4 grid grid-cols-2 gap-2.5">
+            <div className="rounded-2xl bg-white p-3.5 shadow-sm">
+              <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400">
                 Método
               </p>
 
-              <p className="mt-1 font-semibold text-zinc-900">
+              <p className="mt-1 text-sm font-semibold text-zinc-900">
                 {drink.method}
               </p>
             </div>
 
-            <div className="rounded-2xl bg-white p-4">
-              <p className="text-xs font-medium uppercase text-zinc-400">
+            <div className="rounded-2xl bg-white p-3.5 shadow-sm">
+              <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400">
                 Copo
               </p>
 
-              <p className="mt-1 font-semibold text-zinc-900">
-                {drink.glass}
+              <p className="mt-1 text-sm font-semibold text-zinc-900">
+                {getGlassEmoji(drink.glass)} {drink.glass}
               </p>
             </div>
           </div>
         </header>
 
-        <section className="mt-6 rounded-2xl bg-white p-5">
-          <h2 className="text-lg font-bold text-zinc-950">
+        <section className="mt-5 rounded-2xl bg-white p-4 shadow-sm">
+          <h2 className="text-base font-bold text-zinc-950">
             Ingredientes
           </h2>
 
@@ -124,6 +142,18 @@ export default async function DrinkPage({
             ))}
           </ol>
         </section>
+
+        {drink.history && (
+          <section className="mt-4 rounded-2xl bg-white p-5">
+            <h2 className="text-lg font-bold text-zinc-950">
+              História
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-600">
+              {drink.history}
+            </p>
+          </section>
+        )}
 
         <section className="mt-4 rounded-2xl bg-white p-5">
           <p className="text-xs font-medium uppercase text-zinc-400">

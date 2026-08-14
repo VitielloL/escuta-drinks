@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Ficha Técnica | Drinks",
   description: "Consulta rápida de fichas técnicas para bartenders",
+  icons: {
+    icon: "/images/escuta-logo.jpg",
+  },
 };
 
 export default function RootLayout({

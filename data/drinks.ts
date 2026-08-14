@@ -3,7 +3,7 @@ import { Drink } from "@/types/drink";
 export const drinks: Drink[] = [
   {
     id: "bloodymary",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/01-bloody-mary.jpg",
     name: "Bloody Mary",
     category: "Clássicos",
     garnish: "A ESCOLHER",
@@ -33,6 +33,8 @@ export const drinks: Drink[] = [
     ],
     preparation: [
     ],
+    history:
+      "O Bloody Mary nasceu como uma interpretação mais salada e picante do clássico 'Red Snapper' nos anos 1920 em Nova York. Com a fama de bebida de brunch e de 'remédio' para a ressaca, ele virou um dos ícones do café da manhã e da cultura de bares americanos.",
     tags: [
       "clássicos",
       "absolut",
@@ -43,7 +45,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "bittergiuseppe",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/02-bitter-giuseppe.jpg",
     name: "Bitter Giuseppe",
     category: "Clássicos",
     garnish: "Zest de limão siciliano ou azeitona",
@@ -87,7 +89,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "drymartini",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/03-dry-martini.jpg",
     name: "Dry Martini",
     category: "Clássicos",
     garnish: "Zest siciliano ou azeitona",
@@ -111,6 +113,8 @@ export const drinks: Drink[] = [
       "Faça a filtragem com auxilio o strainer em uma taça previamente resfriada",
       "Finalize com um zest de limão siciliano ou azeitona no palito",
     ],
+    history:
+      "O Martini seco é uma variação do clássico martini que ganhou força no início do século XX e ficou associado ao estilo sofisticado de bares elegantes. A versão seca, com mais vermute do que gin, ficou famosa como a expressão mais clássica e elegante do drink.",
     tags: [
       "clássicos",
       "beefeater",
@@ -119,7 +123,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "dirtymartini",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/04-dirty-martini.jpg",
     name: "Dirty Martini",
     category: "Clássicos",
     garnish: "Azeitonas",
@@ -154,6 +158,8 @@ export const drinks: Drink[] = [
       "Finalize com 3 azeitonas no palito",
       "Salmoura de azeitonas",
     ],
+    history:
+      "O Dirty Martini é uma variação do martini tradicional que incorporou salmoura de azeitona para criar um perfil mais salgado e intenso. A versão ganhou popularidade em bares americanos e se tornou um clássico para quem gosta de um toque marítimo e mais corpo no drink.",
     tags: [
       "clássicos",
       "beefeater",
@@ -164,7 +170,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "amarettosour",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/05-amaretto-sour.jpg",
     name: "Amaretto Sour",
     category: "Clássicos Contemporâneos",
     garnish: "Óleos essenciais de limão siciliano",
@@ -202,6 +208,8 @@ export const drinks: Drink[] = [
       "Aguarde 20 a 30 segundos para estabilização da espuma.",
       "expresse óleos essenciais de limão siciliano sobre o copo  e bordas.",
     ],
+    history:
+      "O Amaretto Sour segue a lógica clássica dos drinks sour: base alcoólica, ácido cítrico e doce em equilíbrio. O amaretto, um licor de amêndoa e damasco com origem italiana, se consolidou no mercado dos EUA como base ideal para uma versão mais suave e cremosa desse estilo.",
     tags: [
       "clássicos contemporâneos",
       "amaretto",
@@ -212,7 +220,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "piscosour",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/06-pisco-sour.jpg",
     name: "Pisco Sour",
     category: "Clássicos Contemporâneos",
     garnish: "Zest de limão siciliano",
@@ -256,6 +264,8 @@ export const drinks: Drink[] = [
       "Aguarde 20 a 30 segundos para estabilização da espuma.",
       "Finalize com 3 gotas de angostura sobre a espuma e expresse óleos essenciais de limão siciliano sobre o copo  e bordas.",
     ],
+    history:
+      "A origem mais aceita do Pisco Sour aponta para Lima, no início do século XX, e atribui a criação ao bartender Victor Morris. O drink combina pisco, limão, xarope e clara de ovo, e se tornou um dos grandes símbolos da tradição peruana de coquetelaria.",
     tags: [
       "clássicos contemporâneos",
       "pisco",
@@ -266,7 +276,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "oldcuban",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/07-old-cuban.jpg",
     name: "Old Cuban",
     category: "Clássicos",
     garnish: "Folha de hortelão",
@@ -312,6 +322,8 @@ export const drinks: Drink[] = [
       "Faça double strain (coador Hawthorne + peneira fina) sobre o gelo. Isso elimina pequenos cristais e resíduos de clara, proporcionando uma textura mais limpa.",
       "Finalize com espumante e decore com uma boa folha de hortelã",
     ],
+    history:
+      "O Old Cuban foi criado por Audrey Saunders em 2001 no Bemelmans Bar, em Nova York, como uma releitura sofisticada do Mojito. Com rum, hortelã, limão, xarope e espumante, ele ganhou fama por unir a tradição dos clássicos de rum com uma linha mais elegante e moderna.",
     tags: [
       "clássicos",
       "havana",
@@ -322,7 +334,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "espressomartini",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/08-espresso-martini.jpg",
     name: "Espresso Martini",
     category: "Clássicos",
     garnish: "3 grãos de café",
@@ -362,6 +374,8 @@ export const drinks: Drink[] = [
       "A crema atua como agente espumante natural durante a agitação, conferindo textura aveludada e sustentação para a guarnição.",
       "Evite aguardar mais de 1 minuto entre a extração e o preparo do coquetel, pois a perda da crema compromete a estabilidade da espuma e a apresentação final",
     ],
+    history:
+      "O Espresso Martini foi criado em Londres na década de 1980 por Dick Bradsell, que teria preparado o drink para uma cliente pedindo 'algo que me fizesse sentir como se eu estivesse bebendo café, mas também me metesse em um sono'. Desde então, o drink virou símbolo da coquetelaria moderna e do café com álcool.",
     tags: [
       "clássicos",
       "vodka",
@@ -372,7 +386,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "paperplane",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/09-paperplane.jpg",
     name: "Paperplane",
     category: "Clássicos Contemporâneos",
     garnish: "Zest de limão siciliano",
@@ -410,6 +424,8 @@ export const drinks: Drink[] = [
       "O equilíbrio do Paper Plane depende da precisão das quatro partes iguais.",
       "Pequenas variações da medida ou diluição alteram siginificativamente o perfíl sensorial do coquetel.",
     ],
+    history:
+      "O Paper Plane foi criado em 2008 por Sam Ross, no bar The Aviary, em Chicago. Com proporções iguais de bourbon, Aperol, Amaro Averna e limão, o drink ganhou popularidade rapidamente por equilibrar amargor, doçura e acidez de maneira muito direta e moderna.",
     tags: [
       "clássicos contemporâneos",
       "whisky",
@@ -420,7 +436,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "sidecar",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/10-sidecar.jpg",
     name: "Sidecar",
     category: "Clássicos",
     garnish: "Twist de laranja",
@@ -456,6 +472,8 @@ export const drinks: Drink[] = [
       "Utilize sempre suco fresco e controle a diluição durante a agitação para preservar a textura sedosa e o final seco característicos do coquetel.",
       "A expressão dos óleos do twist de laranja é essencial para ampliar a percepção aromática sem alterar seu equilíbrio",
     ],
+    history:
+      "O Sidecar é um clássico de cognac geralmente associado ao período da Primeira Guerra Mundial e ao contexto elegante de Paris. A origem exata gera debate, mas o drink é consenso como uma criação dos anos 1910 e ficou famoso pela mistura direta de cognac, Cointreau e limão com um toque doce e cítrico.",
     tags: [
       "clássicos",
       "hennessy",
@@ -465,7 +483,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "marktwain",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/11-mark-twain.jpg",
     name: "Mark Twain",
     category: "Clássicos",
     garnish: "twists de limão sicíliano",
@@ -514,7 +532,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "fitzgerald",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/12-fitzgerald.jpg",
     name: "Fitzgerald",
     category: "Clássicos",
     garnish: "Twist de limão siciliano",
@@ -565,7 +583,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "goldrush",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/13-gold-rush.jpg",
     name: "Gold Rush",
     category: "Clássicos",
     garnish: "Twist de limão sicíliano",
@@ -610,7 +628,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "cosmopolitan",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/14-cosmopolitan.jpg",
     name: "Cosmopolitan",
     category: "Clássicos",
     garnish: "Zest de laranja bahia",
@@ -662,7 +680,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "vermutetnica",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/15-vermute-tonica.jpg",
     name: "Vermute Tônica",
     category: "Clássicos",
     garnish: "Meia lua de laranja baha",
@@ -690,7 +708,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral1",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/16-autoral-1.jpg",
     name: "Autoral 1",
     category: "Autorais",
     garnish: "Bala de tamarindo",
@@ -735,7 +753,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral2",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/17-autoral-2.jpg",
     name: "Autoral 2",
     category: "Autorais",
     garnish: "Amendoin praliné artesanal",
@@ -781,7 +799,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral3",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/18-autoral-3.jpg",
     name: "Autoral 3",
     category: "Autorais",
     garnish: "Ar molecular de erva mate verde",
@@ -815,7 +833,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral4",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/19-autoral-4.jpg",
     name: "Autoral 4",
     category: "Autorais",
     garnish: "Não informado",
@@ -855,7 +873,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral5",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/20-autoral-5.jpg",
     name: "Autoral 5",
     category: "Autorais",
     garnish: "Spaghetti de jabuticaba e coentro",
@@ -900,7 +918,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "autoral6",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/21-autoral-6.jpg",
     name: "Autoral 6",
     category: "Autorais",
     garnish: "Esponja de laranja e mel",
@@ -941,7 +959,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "darklady",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/22-dark-lady.jpg",
     name: "Dark Lady",
     category: "Novos Clássicos Brasileiros",
     garnish: "Crusta de Açucar cristal / Zest de laranja bahia",
@@ -981,7 +999,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "urca",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/23-urca.jpg",
     name: "Urca",
     category: "Novos Clássicos Brasileiros",
     garnish: "Zest de limão siciliano",
@@ -1026,7 +1044,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "mojitodoagreste",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/24-mojito-do-agreste.jpg",
     name: "Mojito do agreste",
     category: "Novos Clássicos Brasileiros",
     garnish: "Não informado",
@@ -1080,7 +1098,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "popcool",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/25-pop-cool.jpg",
     name: "Pop cool",
     category: "Novos Clássicos Brasileiros",
     garnish: "Pequeno talo de aipo",
@@ -1135,7 +1153,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "cafun",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/26-cafune.jpg",
     name: "Cafuné",
     category: "Novos Clássicos Brasileiros",
     garnish: "Lascas de coco / raspas de rapadura",
@@ -1179,7 +1197,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "bonfim",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/27-bonfim.jpg",
     name: "Bonfim",
     category: "Novos Clássicos Brasileiros",
     garnish: "Fita de bonfim / Pimenta malagueta",
@@ -1232,7 +1250,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "santabrbara",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/28-santa-barbara.jpg",
     name: "Santa Bárbara",
     category: "Novos Clássicos Brasileiros",
     garnish: "Espuma de gengibre",
@@ -1277,7 +1295,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "santacruzjulep",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/29-santa-cruz-julep.jpg",
     name: "Santa cruz julep",
     category: "Novos Clássicos Brasileiros",
     garnish: "Ramo de hortelã / flores de camomila",
@@ -1321,7 +1339,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "carcar",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/30-carcara.jpg",
     name: "Carcará",
     category: "Novos Clássicos Brasileiros",
     garnish: "Zest de laranja bahia",
@@ -1369,7 +1387,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "roselle",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/31-roselle.jpg",
     name: "Roselle",
     category: "Novos Clássicos Brasileiros",
     garnish: "Pétala de rosa e zest de siciliano",
@@ -1418,7 +1436,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "tupiornot",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/32-tupi-or-not.jpg",
     name: "Tupi or not",
     category: "Novos Clássicos Brasileiros",
     garnish: "Gema de jambu",
@@ -1462,7 +1480,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "3000liras",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/33-3000-liras.jpg",
     name: "3000 Liras",
     category: "Novos Clássicos Brasileiros",
     garnish: "Folha de manjericão",
@@ -1510,7 +1528,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "milestones",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/34-milestones.jpg",
     name: "Milestones",
     category: "Novos Clássicos Brasileiros",
     garnish: "Limão tahiti desidratado",
@@ -1549,7 +1567,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "jorgeamado",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/35-jorge-amado.jpg",
     name: "Jorge Amado",
     category: "Novos Clássicos Brasileiros",
     garnish: "Canela em pau",
@@ -1597,7 +1615,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "caju-amigo",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/36-caju-amigo.jpg",
     name: "Caju Amigo",
     category: "Novos Clássicos Brasileiros",
     garnish: "Compota de caju (vai  no fundo do copo)",
@@ -1648,7 +1666,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "glorybox",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/37-glory-box.jpg",
     name: "Glory Box",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1684,7 +1702,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "santogold",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    image: "/images/38-santogold.jpg",
     name: "Santogold",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1720,7 +1738,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "lemonpepper",
-    image: "https://images.unsplash.com/photo-1536935338788-180ad7d6f5e4?auto=format&fit=crop&w=900&q=80",
+    image: "/images/39-lemon-pepper.jpg",
     name: "Lemon Pepper",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1761,7 +1779,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "back2black",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+    image: "/images/40-back2black.jpg",
     name: "Back2Black",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1792,7 +1810,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "ginchee",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/41-ginchee.jpg",
     name: "Ginchee",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1838,7 +1856,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "savana55",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/42-savana-55.jpg",
     name: "Savana 55",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1889,7 +1907,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "urutu",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    image: "/images/43-urutu.jpg",
     name: "Urutu",
     category: "Clássicos do Meza",
     garnish: "Não informado",
@@ -1930,7 +1948,7 @@ export const drinks: Drink[] = [
   },
   {
     id: "hunnybunny",
-    image: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=80",
+    image: "/images/44-hunny-bunny.jpg",
     name: "Hunny Bunny",
     category: "Clássicos do Meza",
     garnish: "Não informado",
