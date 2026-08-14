@@ -74,7 +74,7 @@ export default function Home() {
 
             <p className="mt-3 text-sm leading-6 text-zinc-300">
               Bartender da casa e vou fazer os melhores drinks possíveis nessa noite 🌙🍸 <br />
-              <span className="font-medium text-zinc-100">(a bartender favorita do Vit)</span>
+              <span className="font-medium text-zinc-100">(a bartender favorita do Vit 😊)</span>
             </p>
 
             <button
