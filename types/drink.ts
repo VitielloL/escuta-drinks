@@ -7,6 +7,7 @@ export interface Ingredient {
 
 export interface Drink {
   id: string;
+  image?: string;
   name: string;
   category: string;
   garnish: string;

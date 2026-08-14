@@ -20,7 +20,7 @@ export default function SearchBar({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder="Buscar drink..."
-        className="h-14 w-full rounded-2xl border border-zinc-200 bg-white pl-12 pr-4 text-base outline-none transition focus:border-zinc-400 focus:ring-2 focus:ring-zinc-200"
+        className="h-14 w-full rounded-2xl border border-zinc-200 bg-white pl-12 pr-4 text-base outline-none transition focus:ring-2 focus:ring-zinc-200"
       />
     </div>
   );

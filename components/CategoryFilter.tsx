@@ -12,7 +12,7 @@ export default function CategoryFilter({
   onSelect,
 }: CategoryFilterProps) {
   return (
-    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+    <div className="flex flex-wrap gap-2">
       {categories.map((category) => {
         const active = category === selected;
 
@@ -21,10 +21,10 @@ export default function CategoryFilter({
             key={category}
             type="button"
             onClick={() => onSelect(category)}
-            className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition ${
+            className={`rounded-full px-4 py-2 text-sm font-medium transition ${
               active
                 ? "bg-zinc-900 text-white"
-                : "bg-white text-zinc-600 border border-zinc-200"
+                : "border border-zinc-200 bg-white text-zinc-600"
             }`}
           >
             {category}

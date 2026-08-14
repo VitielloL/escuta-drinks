@@ -30,6 +30,16 @@ export default async function DrinkPage({
         </Link>
 
         <header className="mt-5">
+          {drink.image && (
+            <div className="mb-4 overflow-hidden rounded-3xl border border-zinc-200 bg-white">
+              <img
+                src={drink.image}
+                alt={drink.name}
+                className="h-56 w-full object-cover"
+              />
+            </div>
+          )}
+
           <p className="text-sm font-medium uppercase tracking-wide text-zinc-500">
             {drink.category}
           </p>
