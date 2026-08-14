@@ -331,6 +331,14 @@ function AdminPageContent() {
   }
 
   async function deleteDrink(id: string) {
+    const targetDrink = drinks.find((drink) => drink.id === id);
+    const drinkName = targetDrink?.name ?? "este drink";
+
+    const confirmed = window.confirm(`Deseja realmente excluir "${drinkName}"?`);
+    if (!confirmed) {
+      return;
+    }
+
     const response = await fetch(`/api/drinks/${id}`, {
       method: "DELETE",
     });
