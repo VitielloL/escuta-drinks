@@ -55,6 +55,7 @@ function AdminPageContent() {
   const [form, setForm] = useState(emptyForm);
   const [drinks, setDrinks] = useState<Drink[]>([]);
   const [message, setMessage] = useState("");
+  const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
 
   const categoryOptions = useMemo(() => {
     const unique = Array.from(
@@ -334,14 +335,19 @@ function AdminPageContent() {
     const targetDrink = drinks.find((drink) => drink.id === id);
     const drinkName = targetDrink?.name ?? "este drink";
 
-    const confirmed = window.confirm(`Deseja realmente excluir "${drinkName}"?`);
-    if (!confirmed) {
+    setDeleteTarget({ id, name: drinkName });
+  }
+
+  async function confirmDeleteDrink() {
+    if (!deleteTarget) {
       return;
     }
 
-    const response = await fetch(`/api/drinks/${id}`, {
+    const response = await fetch(`/api/drinks/${deleteTarget.id}`, {
       method: "DELETE",
     });
+
+    setDeleteTarget(null);
 
     if (response.ok) {
       setMessage("Drink removido com sucesso!");
@@ -443,6 +449,36 @@ function AdminPageContent() {
         </div>
 
         {message && <p className="mb-4 rounded-xl bg-zinc-900 px-3 py-2 text-sm text-white">{message}</p>}
+
+        {deleteTarget && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+            <div className="w-full max-w-md rounded-[28px] bg-white p-6 shadow-2xl">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-zinc-500">Confirmação</p>
+              <h3 className="mt-3 text-2xl font-black text-zinc-900">Excluir drink?</h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-600">
+                Você tem certeza que deseja remover <span className="font-semibold text-zinc-900">{deleteTarget.name}</span>? Essa ação não pode ser desfeita.
+              </p>
+
+              <div className="mt-6 flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setDeleteTarget(null)}
+                  className="flex-1 rounded-full border border-zinc-200 bg-white px-4 py-3 text-sm font-semibold text-zinc-800"
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  type="button"
+                  onClick={confirmDeleteDrink}
+                  className="flex-1 rounded-full bg-red-600 px-4 py-3 text-sm font-semibold text-white"
+                >
+                  Excluir
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="rounded-[28px] bg-white p-5 shadow-sm">
