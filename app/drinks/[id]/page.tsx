@@ -12,12 +12,12 @@ interface DrinkPageProps {
 function getGlassEmoji(glass: string) {
   const normalized = glass.toLowerCase();
 
-  if (normalized.includes("long") || normalized.includes("americano")) return "🥤";
-  if (normalized.includes("rocks") || normalized.includes("on the rocks")) return "🧊";
-  if (normalized.includes("flute") || normalized.includes("champagne")) return "🥂";
-  if (normalized.includes("coupe") || normalized.includes("nick") || normalized.includes("nora")) return "🍸";
-  if (normalized.includes("diamante") || normalized.includes("cristal")) return "💎";
-  if (normalized.includes("copo") || normalized.includes("taça")) return "🥃";
+  if (normalized.includes("highball") || normalized.includes("long") || normalized.includes("americano") || normalized.includes("collins")) return "🥤";
+  if (normalized.includes("rocks") || normalized.includes("old fashioned") || normalized.includes("on the rocks") || normalized.includes("short") || normalized.includes("tumbler")) return "🧊";
+  if (normalized.includes("flute") || normalized.includes("champagne") || normalized.includes("vinho") || normalized.includes("sparkling")) return "🥂";
+  if (normalized.includes("coupe") || normalized.includes("nick") || normalized.includes("nora") || normalized.includes("martini") || normalized.includes("mix") || normalized.includes("sour")) return "🍸";
+  if (normalized.includes("diamante") || normalized.includes("cristal") || normalized.includes("crystal")) return "💎";
+  if (normalized.includes("copo") || normalized.includes("taça") || normalized.includes("goblet") || normalized.includes("stemless")) return "🥃";
 
   return "🍸";
 }

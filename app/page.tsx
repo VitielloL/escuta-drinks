@@ -1,17 +1,51 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SearchBar from "@/components/SearchBar";
 import CategoryFilter from "@/components/CategoryFilter";
 import DrinkCard from "@/components/DrinkCard";
-import { categories, drinks } from "@/data/drinks";
+import { categories, drinks as fallbackDrinks } from "@/data/drinks";
+import type { Drink } from "@/types/drink";
 
 export default function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Todos");
   const [showWelcomeModal, setShowWelcomeModal] = useState(true);
   const [showLifeModal, setShowLifeModal] = useState(false);
+  const [allDrinks, setAllDrinks] = useState<Drink[]>(fallbackDrinks);
+  const [isAdminLogged, setIsAdminLogged] = useState(false);
+
+  useEffect(() => {
+    const sessionStatus = sessionStorage.getItem("escuta-admin");
+    setIsAdminLogged(sessionStatus === "true");
+
+    let isMounted = true;
+
+    fetch("/api/drinks")
+      .then(async (response) => {
+        if (!response.ok) {
+          return fallbackDrinks;
+        }
+
+        const data = await response.json();
+        return Array.isArray(data) ? data : fallbackDrinks;
+      })
+      .then((data) => {
+        if (isMounted) {
+          setAllDrinks(data);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setAllDrinks(fallbackDrinks);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleCloseWelcome = () => {
     setShowWelcomeModal(false);
@@ -22,10 +56,19 @@ export default function Home() {
     setShowLifeModal(false);
   };
 
+  const handleOpenAdmin = () => {
+    window.location.href = "/admin";
+  };
+
+  const handleLogoutAdmin = () => {
+    sessionStorage.removeItem("escuta-admin");
+    setIsAdminLogged(false);
+  };
+
   const filteredDrinks = useMemo(() => {
     const normalizedSearch = search.toLowerCase().trim();
 
-    return drinks.filter((drink) => {
+    return allDrinks.filter((drink) => {
       const matchesCategory =
         category === "Todos" || drink.category === category;
 
@@ -47,7 +90,7 @@ export default function Home() {
 
       return matchesCategory && matchesSearch;
     });
-  }, [search, category]);
+  }, [search, category, allDrinks]);
 
   return (
     <>
@@ -127,24 +170,34 @@ export default function Home() {
       <main className="min-h-screen bg-[#f5f1ed]">
         <div className="mx-auto min-h-screen max-w-2xl bg-[#f5f1ed] px-4 pb-8 pt-5">
           <header className="mb-5 rounded-[28px] border border-zinc-200 bg-white p-3.5 shadow-[0_10px_25px_rgba(24,24,27,0.04)]">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/images/escuta-logo.jpg"
-                alt="Escuta"
-                width={64}
-                height={64}
-                className="h-14 w-14 rounded-2xl object-cover"
-              />
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/images/escuta-logo.jpg"
+                  alt="Escuta"
+                  width={64}
+                  height={64}
+                  className="h-14 w-14 rounded-2xl object-cover"
+                />
 
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
-                  Escuta
-                </p>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
+                    Escuta
+                  </p>
 
-                <h1 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
-                  Drinks
-                </h1>
+                  <h1 className="mt-1 text-2xl font-black tracking-tight text-zinc-950">
+                    Drinks
+                  </h1>
+                </div>
               </div>
+
+              <button
+                type="button"
+                onClick={isAdminLogged ? handleLogoutAdmin : handleOpenAdmin}
+                className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-700 transition hover:bg-zinc-100"
+              >
+                {isAdminLogged ? "Sair" : "Admin"}
+              </button>
             </div>
 
             <p className="mt-3 text-xs text-zinc-500">
@@ -178,11 +231,29 @@ export default function Home() {
               </span>
             </div>
 
+            {isAdminLogged && (
+              <div className="mb-3 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.location.href = "/admin?new=1";
+                  }}
+                  className="rounded-full bg-zinc-900 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white"
+                >
+                  + Novo drink
+                </button>
+              </div>
+            )}
+
             <div className="space-y-2.5">
               {filteredDrinks.map((drink) => (
                 <DrinkCard
                   key={drink.id}
                   drink={drink}
+                  showAdminControls={isAdminLogged}
+                  onEdit={(selectedDrink) => {
+                    window.location.href = `/admin?edit=${selectedDrink.id}`;
+                  }}
                 />
               ))}
             </div>
