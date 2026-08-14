@@ -387,7 +387,7 @@ export const drinks: Drink[] = [
   {
     id: "paperplane",
     image: "/images/09-paperplane.jpg",
-    name: "Paperplane",
+    name: "PaperPlane",
     category: "Clássicos Contemporâneos",
     garnish: "Zest de limão siciliano",
     method: "Batido",
@@ -573,6 +573,8 @@ export const drinks: Drink[] = [
       "A execução depende de um gim com presença suficiente para não se perder diante da acidez do limão, enquanto a diluição permancer",
       "controlada para preservar a textura seca e refrescante do que define o drink.",
     ],
+    history:
+      "O Fitzgerald faz parte da linhagem dos gin sours clássicos, com um perfil mais seco e menos doce do que um sour tradicional. A origem exata do drink não é atribuída a um único inventor de forma universal, mas ele se consolidou como uma variação elegante e eficiente do gin sour na cultura de bares do século XX.",
     tags: [
       "clássicos",
       "gin",
@@ -619,6 +621,8 @@ export const drinks: Drink[] = [
       "preservando as características aromáticas do mel.",
       "A diluição deve ser moderada para manter um coquetel de corpo sedo, acidez equilibrada e final persistente.",
     ],
+    history:
+      "O Gold Rush é um modern classic do início dos anos 2000, nascido da tradição dos whiskey sours e da ideia de usar mel como doçura para criar uma estrutura mais densa e aromática. O drink ganhou força no revival dos coquetéis clássicos, e sua popularidade se deve ao equilíbrio direto entre bourbon, limão e mel.",
     tags: [
       "clássicos",
       "whisky",
@@ -670,6 +674,8 @@ export const drinks: Drink[] = [
       "A agitação precisa ser suficiente para integrar o uco e conferir textura leve, sem diluir demais a bebida",
       "nem apagar a presença de vodka e doi cointreau.",
     ],
+    history:
+      "A origem do Cosmopolitan é disputada e aparece em múltiplas versões da cultura dos bares dos anos 1970 e 1980. O que se sabe com segurança é que a versão que se tornou clássica foi popularizada em Nova York no fim dos anos 1980, quando o drink ganhou fama como um martini rosado elegante, seco e muito visual.",
     tags: [
       "clássicos",
       "vodka",
@@ -700,6 +706,8 @@ export const drinks: Drink[] = [
     ],
     preparation: [
     ],
+    history:
+      "O Vermute Tônica nasce da tradição dos aperitivos com vermute, que se espalharam por cafés e bares europeus e depois ganharam força em outros mercados como bebida leve e refrescante. A combinação com tônica é uma variação moderna e direta do uso do vermute como aperitivo, sem uma autoria individual tão marcada quanto em certos clássicos do século XX.",
     tags: [
       "clássicos",
       "vermute",

@@ -120,6 +120,18 @@ export default async function DrinkPage({
           </div>
         </section>
 
+        {drink.history && (
+          <section className="mt-4 rounded-2xl bg-white p-5">
+            <h2 className="text-lg font-bold text-zinc-950">
+              História
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-600">
+              {drink.history}
+            </p>
+          </section>
+        )}
+
         <section className="mt-4 rounded-2xl bg-white p-5">
           <h2 className="text-lg font-bold text-zinc-950">
             Preparo
@@ -142,18 +154,6 @@ export default async function DrinkPage({
             ))}
           </ol>
         </section>
-
-        {drink.history && (
-          <section className="mt-4 rounded-2xl bg-white p-5">
-            <h2 className="text-lg font-bold text-zinc-950">
-              História
-            </h2>
-
-            <p className="mt-3 text-sm leading-7 text-zinc-600">
-              {drink.history}
-            </p>
-          </section>
-        )}
 
         <section className="mt-4 rounded-2xl bg-white p-5">
           <p className="text-xs font-medium uppercase text-zinc-400">
