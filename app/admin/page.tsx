@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { categories } from "@/data/drinks";
+import { categories, deprecatedCategories } from "@/data/drinks";
 import { supabase } from "@/lib/supabase";
 import type { Drink, Ingredient } from "@/types/drink";
 
@@ -46,8 +46,13 @@ function generateDrinkId(name: string, existingIds: string[]) {
 
 function AdminPageContent() {
   const searchParams = useSearchParams();
-  const [hasHydrated, setHasHydrated] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState<boolean>(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return sessionStorage.getItem("escuta-admin") === "true";
+  });
   const [username, setUsername] = useState("admin");
   const [password, setPassword] = useState("admin");
   const [loading, setLoading] = useState(false);
@@ -62,7 +67,9 @@ function AdminPageContent() {
     const unique = Array.from(
       new Set([
         ...categories.filter((item) => item !== "Todos"),
-        ...drinks.map((drink) => drink.category).filter(Boolean),
+        ...drinks
+          .map((drink) => drink.category)
+          .filter((value): value is string => Boolean(value) && !deprecatedCategories.has(value)),
       ])
     );
 
@@ -106,54 +113,54 @@ function AdminPageContent() {
   );
 
   useEffect(() => {
-    const session = sessionStorage.getItem("escuta-admin");
-    const loggedIn = session === "true";
-
-    setIsLogged(loggedIn);
-    setHasHydrated(true);
-
-    if (loggedIn) {
-      loadDrinks();
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!hasHydrated || !isLogged || drinks.length === 0) {
+    if (!isLogged) {
       return;
     }
 
-    const editId = searchParams.get("edit");
-    const newMode = searchParams.get("new");
+    void loadDrinks();
+  }, [isLogged]);
 
-    if (newMode === "1") {
-      setShowForm(true);
-      setForm({
+  const routeEditId = searchParams.get("edit");
+  const routeNewMode = searchParams.get("new");
+  const routeFormPreset = useMemo(() => {
+    if (!isLogged || drinks.length === 0) {
+      return null;
+    }
+
+    if (routeNewMode === "1") {
+      return {
         ...emptyForm,
         category: categoryOptions[0] ?? "Clássicos",
-      });
-      return;
+      };
     }
 
-    if (editId) {
-      const targetDrink = drinks.find((drink) => drink.id === editId);
-      if (targetDrink) {
-        setShowForm(true);
-        setForm({
-          id: targetDrink.id,
-          name: targetDrink.name,
-          category: targetDrink.category,
-          garnish: targetDrink.garnish ?? "",
-          method: targetDrink.method ?? "",
-          glass: targetDrink.glass ?? "",
-          image: targetDrink.image ?? "",
-          history: targetDrink.history ?? "",
-          ingredients: targetDrink.ingredients?.length ? targetDrink.ingredients : [{ name: "", amount: "", unit: "" }],
-          preparation: targetDrink.preparation?.length ? targetDrink.preparation : [""],
-          tags: targetDrink.tags?.length ? targetDrink.tags : [""],
-        });
+    if (routeEditId) {
+      const targetDrink = drinks.find((drink) => drink.id === routeEditId);
+      if (!targetDrink) {
+        return null;
       }
+
+      return {
+        id: targetDrink.id,
+        name: targetDrink.name,
+        category: targetDrink.category,
+        garnish: targetDrink.garnish ?? "",
+        method: targetDrink.method ?? "",
+        glass: targetDrink.glass ?? "",
+        image: targetDrink.image ?? "",
+        history: targetDrink.history ?? "",
+        ingredients: targetDrink.ingredients?.length ? targetDrink.ingredients : [{ name: "", amount: "", unit: "" }],
+        preparation: targetDrink.preparation?.length ? targetDrink.preparation : [""],
+        tags: targetDrink.tags?.length ? targetDrink.tags : [""],
+      };
     }
-  }, [hasHydrated, isLogged, drinks, searchParams, categoryOptions]);
+
+    return null;
+  }, [categoryOptions, drinks, isLogged, routeEditId, routeNewMode]);
+
+  const isRouteFormOpen = Boolean(routeFormPreset);
+  const activeForm = isRouteFormOpen && !showForm ? routeFormPreset ?? form : form;
+  const shouldShowForm = showForm || isRouteFormOpen;
 
   const filteredDrinks = useMemo(() => {
     const normalized = drinkSearch.trim().toLowerCase();
@@ -371,22 +378,6 @@ function AdminPageContent() {
     }
   }
 
-  if (!hasHydrated) {
-    return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f1ed] px-4">
-        <div className="w-full max-w-sm rounded-[28px] bg-white p-6 shadow-lg">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-zinc-500">Escuta</p>
-          <h1 className="mt-3 text-3xl font-black text-zinc-900">Admin</h1>
-          <div className="mt-5 animate-pulse space-y-3">
-            <div className="h-11 rounded-xl bg-zinc-100" />
-            <div className="h-11 rounded-xl bg-zinc-100" />
-            <div className="h-12 rounded-full bg-zinc-100" />
-          </div>
-        </div>
-      </main>
-    );
-  }
-
   if (!isLogged) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#f5f1ed] px-4">
@@ -496,8 +487,8 @@ function AdminPageContent() {
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="rounded-[28px] bg-white p-5 shadow-sm">
-            {!showForm && (
-              <div className="flex min-h-[160px] items-center justify-center">
+            {!shouldShowForm && (
+              <div className="flex min-h-40 items-center justify-center">
                 <button
                   type="button"
                   onClick={() => {
@@ -514,7 +505,7 @@ function AdminPageContent() {
               </div>
             )}
 
-            {showForm && (
+            {shouldShowForm && (
               <form onSubmit={submitDrink}>
                 <div className="mb-4 flex items-center justify-between gap-3">
                   <h2 className="text-xl font-black text-zinc-900">Adicionar / editar drink</h2>
@@ -535,7 +526,7 @@ function AdminPageContent() {
                     <span>Nome</span>
                     <input
                       required
-                      value={form.name}
+                      value={activeForm.name}
                       onChange={(event) => updateField("name", event.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"
                     />
@@ -544,7 +535,7 @@ function AdminPageContent() {
                   <label className="space-y-1 text-sm font-medium text-zinc-700">
                     <span>Categoria</span>
                     <select
-                      value={form.category || categoryOptions[0] || "Clássicos"}
+                      value={activeForm.category || categoryOptions[0] || "Clássicos"}
                       onChange={(event) => updateField("category", event.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"
                     >
@@ -559,7 +550,7 @@ function AdminPageContent() {
                   <label className="space-y-1 text-sm font-medium text-zinc-700">
                     <span>Imagem</span>
                     <input
-                      value={form.image}
+                      value={activeForm.image}
                       onChange={(event) => updateField("image", event.target.value)}
                       placeholder="https://... ou /images/..."
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"
@@ -585,7 +576,7 @@ function AdminPageContent() {
                     <span>Guarnição</span>
                     <input
                       list="garnish-options"
-                      value={form.garnish}
+                      value={activeForm.garnish}
                       onChange={(event) => updateField("garnish", event.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"
                     />
@@ -600,7 +591,7 @@ function AdminPageContent() {
                     <span>Método</span>
                     <input
                       list="method-options"
-                      value={form.method}
+                      value={activeForm.method}
                       onChange={(event) => updateField("method", event.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"
                     />
@@ -615,7 +606,7 @@ function AdminPageContent() {
                     <span>Copo</span>
                     <input
                       list="glass-options"
-                      value={form.glass}
+                      value={activeForm.glass}
                       onChange={(event) => updateField("glass", event.target.value)}
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"
                     />
@@ -634,7 +625,7 @@ function AdminPageContent() {
                       <button type="button" onClick={addIngredient} className="text-sm font-semibold text-zinc-900">+ adicionar</button>
                     </div>
 
-                    {(form.ingredients ?? []).map((ingredient, index) => (
+                    {(activeForm.ingredients ?? []).map((ingredient, index) => (
                       <div key={index} className="mb-3 grid gap-2 rounded-xl border border-zinc-200 p-3 md:grid-cols-[1.3fr_0.5fr_0.5fr_auto]">
                         <input
                           value={ingredient.name}
@@ -664,7 +655,7 @@ function AdminPageContent() {
                       <h3 className="font-bold text-zinc-900">Preparo</h3>
                       <button type="button" onClick={addPreparationStep} className="text-sm font-semibold text-zinc-900">+ adicionar</button>
                     </div>
-                    {(form.preparation ?? []).map((step, index) => (
+                    {(activeForm.preparation ?? []).map((step, index) => (
                       <div key={index} className="mb-2 flex gap-2">
                         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white">{index + 1}</span>
                         <input
@@ -682,7 +673,7 @@ function AdminPageContent() {
                       <h3 className="font-bold text-zinc-900">Tags</h3>
                       <button type="button" onClick={addTag} className="text-sm font-semibold text-zinc-900">+ adicionar</button>
                     </div>
-                    {(form.tags ?? []).map((tag, index) => (
+                    {(activeForm.tags ?? []).map((tag, index) => (
                       <div key={index} className="mb-2 flex gap-2">
                         <input
                           value={tag}
@@ -697,7 +688,7 @@ function AdminPageContent() {
                   <label className="block space-y-1 text-sm font-medium text-zinc-700">
                     <span>História</span>
                     <textarea
-                      value={form.history}
+                      value={activeForm.history}
                       onChange={(event) => updateField("history", event.target.value)}
                       rows={5}
                       className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 outline-none"

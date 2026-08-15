@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { drinks as fallbackDrinks } from "@/data/drinks";
+import { deprecatedCategories, drinks as fallbackDrinks } from "@/data/drinks";
 import { createSupabaseServerClient } from "@/lib/supabase";
 import type { Drink } from "@/types/drink";
 
@@ -42,17 +42,25 @@ function normalizeDrink(raw: Record<string, unknown>): Drink {
 export async function GET() {
   const client = createSupabaseServerClient();
 
+  const visibleFallbackDrinks = fallbackDrinks.filter(
+    (drink) => !deprecatedCategories.has(drink.category)
+  );
+
   if (!client) {
-    return NextResponse.json(fallbackDrinks);
+    return NextResponse.json(visibleFallbackDrinks);
   }
 
   const { data, error } = await client.from("drinks").select("*").order("created_at", { ascending: false });
 
   if (error || !data) {
-    return NextResponse.json(fallbackDrinks);
+    return NextResponse.json(visibleFallbackDrinks);
   }
 
-  return NextResponse.json(data.map((row) => normalizeDrink(row as Record<string, unknown>)));
+  const sanitized = data
+    .map((row) => normalizeDrink(row as Record<string, unknown>))
+    .filter((drink) => !deprecatedCategories.has(drink.category));
+
+  return NextResponse.json(sanitized);
 }
 
 export async function POST(request: Request) {
