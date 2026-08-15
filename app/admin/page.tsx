@@ -713,7 +713,12 @@ function AdminPageContent() {
           </div>
 
           <aside className="rounded-[28px] bg-white p-5 shadow-sm">
-            <h2 className="text-xl font-black text-zinc-900">Drinks cadastrados</h2>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-xl font-black text-zinc-900">Drinks cadastrados</h2>
+              <span className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold text-zinc-700">
+                {drinks.length} {drinks.length === 1 ? "drink" : "drinks"}
+              </span>
+            </div>
 
             <div className="mt-4">
               <input
