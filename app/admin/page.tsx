@@ -56,6 +56,7 @@ function AdminPageContent() {
   const [drinks, setDrinks] = useState<Drink[]>([]);
   const [message, setMessage] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
+  const [drinkSearch, setDrinkSearch] = useState("");
 
   const categoryOptions = useMemo(() => {
     const unique = Array.from(
@@ -153,6 +154,19 @@ function AdminPageContent() {
       }
     }
   }, [hasHydrated, isLogged, drinks, searchParams, categoryOptions]);
+
+  const filteredDrinks = useMemo(() => {
+    const normalized = drinkSearch.trim().toLowerCase();
+
+    if (!normalized) {
+      return drinks;
+    }
+
+    return drinks.filter((drink) => {
+      const searchText = `${drink.name} ${drink.category}`.toLowerCase();
+      return searchText.includes(normalized);
+    });
+  }, [drinkSearch, drinks]);
 
   async function loadDrinks() {
     const response = await fetch("/api/drinks");
@@ -700,10 +714,24 @@ function AdminPageContent() {
 
           <aside className="rounded-[28px] bg-white p-5 shadow-sm">
             <h2 className="text-xl font-black text-zinc-900">Drinks cadastrados</h2>
-            <div className="mt-4 space-y-3">
-              {drinks.length === 0 && <p className="text-sm text-zinc-500">Nenhum drink cadastrado ainda.</p>}
 
-              {drinks.map((drink) => (
+            <div className="mt-4">
+              <input
+                value={drinkSearch}
+                onChange={(event) => setDrinkSearch(event.target.value)}
+                placeholder="Filtrar por nome ou categoria"
+                className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2.5 text-sm outline-none"
+              />
+            </div>
+
+            <div className="mt-4 space-y-3">
+              {filteredDrinks.length === 0 && (
+                <p className="text-sm text-zinc-500">
+                  {drinks.length === 0 ? "Nenhum drink cadastrado ainda." : "Nenhum resultado para este filtro."}
+                </p>
+              )}
+
+              {filteredDrinks.map((drink) => (
                 <div key={drink.id} className="rounded-2xl border border-zinc-200 p-3">
                   <div className="flex items-start justify-between gap-3">
                     <div>
