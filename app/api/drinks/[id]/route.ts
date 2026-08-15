@@ -9,7 +9,13 @@ export async function DELETE(
   const client = createSupabaseServerClient();
 
   if (!client) {
-    return NextResponse.json({ error: "Supabase não configurado" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "Supabase não configurado. Defina NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY e SUPABASE_SERVICE_ROLE_KEY no ambiente da Vercel.",
+      },
+      { status: 500 }
+    );
   }
 
   const { error } = await client.from("drinks").delete().eq("id", id);
