@@ -1,12 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { drinks } from "@/data/drinks";
+import { drinks as fallbackDrinks } from "@/data/drinks";
+import { createSupabaseServerClient } from "@/lib/supabase";
+import type { Drink } from "@/types/drink";
 
 interface DrinkPageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+function normalizeDrink(raw: Record<string, unknown>): Drink {
+  const ingredients = Array.isArray(raw.ingredients)
+    ? raw.ingredients
+        .filter((item): item is Record<string, unknown> => typeof item === "object" && item !== null)
+        .map((item) => ({
+          name: String(item.name ?? ""),
+          amount: String(item.amount ?? ""),
+          unit: String(item.unit ?? ""),
+          observation: item.observation ? String(item.observation) : undefined,
+        }))
+        .filter((item) => item.name || item.amount || item.unit)
+    : [];
+
+  const preparation = Array.isArray(raw.preparation)
+    ? raw.preparation.filter((item): item is string => typeof item === "string")
+    : [];
+
+  return {
+    id: String(raw.id ?? ""),
+    image: typeof raw.image === "string" ? raw.image : "",
+    name: String(raw.name ?? ""),
+    category: String(raw.category ?? "Sem categoria"),
+    garnish: String(raw.garnish ?? ""),
+    method: String(raw.method ?? ""),
+    glass: String(raw.glass ?? ""),
+    history: typeof raw.history === "string" ? raw.history : "",
+    ingredients,
+    preparation,
+    tags: Array.isArray(raw.tags) ? raw.tags.filter((item): item is string => typeof item === "string") : [],
+  };
 }
 
 function getGlassEmoji(glass: string) {
@@ -27,7 +61,20 @@ export default async function DrinkPage({
 }: DrinkPageProps) {
   const { id } = await params;
 
-  const drink = drinks.find((item) => item.id === id);
+  const client = createSupabaseServerClient();
+  let drink: Drink | null = null;
+
+  if (client) {
+    const { data, error } = await client.from("drinks").select("*").eq("id", id).maybeSingle();
+
+    if (!error && data) {
+      drink = normalizeDrink(data as Record<string, unknown>);
+    }
+  }
+
+  if (!drink) {
+    drink = fallbackDrinks.find((item) => item.id === id) ?? null;
+  }
 
   if (!drink) {
     notFound();
